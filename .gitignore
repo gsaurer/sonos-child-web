@@ -19,3 +19,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+src/config/config.json
+src/data/musiclibrary.json
