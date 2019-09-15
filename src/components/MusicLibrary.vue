@@ -30,7 +30,7 @@ export default {
         .get(url)
         .then(results => {
           this.results = results.data;
-          //alert(results.data);
+          alert(results.data);
         });
     }
   }
@@ -45,10 +45,10 @@ export default {
   max-width: 80rem;
   margin: 5rem auto;
   padding: 0 5rem;
+  align-items: center;
 }
 .gallery-panel img {
   width: 100%;
-  //height: 22vw;
   object-fit: cover;
   border-radius: 0.75rem;
 }
