@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="gallery">
-      <div class="gallery-panel" v-for="music in musiclibrary" :key="music.id">
+      <div class="gallery-panel" v-for="music in musiclibrary()" :key="music.id">
         <img :src="thumbUrl(music.filename)" :alt="music.uri" @click.self="play(music.uri)" />
       </div>
     </div>
@@ -9,29 +9,27 @@
 </template>
 
 <script>
-import musiclibrary from "@/data/musiclibrary.json";
 import config from "@/config/config.json";
-import axios from 'axios';
+import fs from "fs";
+import axios from "axios";
 
 export default {
   name: "Gallery",
-  data() {
-    return {
-      musiclibrary
-    };
-  },
   methods: {
+    musiclibrary() {
+      //return JSON.parse(fs.readFileSync("../data/musiclibrary.json", "utf8"));
+      return require("../data/musiclibrary.json");
+    },
     thumbUrl(filename) {
       return require(`../data/images/${filename}`);
     },
     play(uri) {
+      //var config = require("../config/config.json");
       var url = config.url + config.room + "/nfc/" + uri;
-      axios
-        .get(url)
-        .then(results => {
-          this.results = results.data;
-          alert(results.data);
-        });
+      axios.get(url).then(results => {
+        this.results = results.data;
+        alert(results.data);
+      });
     }
   }
 };
