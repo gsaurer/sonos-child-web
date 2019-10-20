@@ -10,7 +10,7 @@
 
 <script>
 import config from "@/config/config.json";
-import fs from "fs";
+//import fs from "fs";
 import axios from "axios";
 
 export default {
